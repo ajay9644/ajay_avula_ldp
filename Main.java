@@ -30,3 +30,5 @@ public class Main {
         System.out.println(winner);
     }
 }
+//Time complexity of above code : O(n) -- for iterating over the sequence of length 'n'
+// Space complexity of above code O(n) -- for storing the sequence of length 'n'
