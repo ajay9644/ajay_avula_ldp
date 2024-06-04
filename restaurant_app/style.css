@@ -16,6 +16,8 @@ main {
   border: 2px solid gainsboro;
   width: 30%;
   height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 h3 {
   text-align: center;
@@ -39,6 +41,7 @@ h3 {
   height: 25%;
   margin-bottom: 10%;
   box-shadow: 1px 3px 5px gray;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -51,6 +54,9 @@ h3 {
   margin: 0;
   padding: 3%;
   padding-left: 4.5%;
+}
+#tables li:hover {
+  background-color: aquamarine;
 }
 
 .rightContainer {
@@ -72,10 +78,12 @@ h3 {
   height: 20%;
   margin-bottom: 3%;
   box-shadow: 1px 3px 5px gray;
-
+  border-radius: 10px;
   cursor: pointer;
 }
-
+#menu li:hover {
+  background-color: #478aed;
+}
 #menu li h2,
 #menu li h3 {
   margin: 0;
@@ -100,8 +108,8 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 400px;
+  width: 600px;
+  height: 500px;
   background-color: white;
   border: 1px solid #ccc;
   padding: 20px;
