@@ -6,7 +6,7 @@ const menu = {
   item5: { name: "Butter Chicken", cost: 300, category: "Main Course" },
   item6: { name: "Gulab Jamun", cost: 50, category: "Desserts" },
   item7: { name: "Chocolate Brownie", cost: 100, category: "Desserts" },
-  item8: { name: "Kaala Jamun", cost: 70, category: "Deserts" },
+  item8: { name: "Kaala Jamun", cost: 70, category: "Desserts" },
   item9: { name: "Coke", cost: 50, category: "Beverages" },
   item10: { name: "Chocolate Shake", cost: 70, category: "Beverages" },
   item11: { name: "Maaza", cost: 50, category: "Beverages" },
@@ -18,6 +18,7 @@ var tables = {
   table1: { cost: 0, items: 0, orders: {} },
   table2: { cost: 0, items: 0, orders: {} },
   table3: { cost: 0, items: 0, orders: {} },
+  table4: { cost: 0, items: 0, orders: {} },
 };
 const len = Object.keys(tables).length;
 const menuLen = Object.keys(menu).length;
@@ -56,30 +57,46 @@ function displayTables() {
 }
 
 function displayMenu() {
+  const menuByCategory = new Map();
   for (let i = 1; i <= menuLen; i++) {
-    let { name, cost, category } = menu["item" + i];
+    const { name, cost, category } = menu["item" + i];
+    if (!menuByCategory.has(category)) {
+      menuByCategory.set(category, []);
+    }
+    menuByCategory.get(category).push({ name, cost });
+  }
+  let i = 1;
 
-    let li = document.createElement("li");
-    li.id = "item" + i;
-    li.draggable = true;
-    li.ondragstart = function (event) {
-      drag(event);
-    };
+  function displayCategoryItems(category, items) {
+    const categoryHeader = document.createElement("h2");
+    categoryHeader.id = "category";
+    categoryHeader.textContent = category;
+    menuContent.appendChild(categoryHeader);
 
-    let h2 = document.createElement("h2");
-    h2.textContent = name;
-    li.appendChild(h2);
+    for (const item of items) {
+      const li = document.createElement("li");
+      li.id = "item" + i;
+      li.setAttribute("category", category);
+      li.draggable = true;
+      li.ondragstart = function (event) {
+        drag(event);
+      };
 
-    let categoryP = document.createElement("p");
-    categoryP.id = "category";
-    categoryP.textContent = category;
-    li.appendChild(categoryP);
+      const h2 = document.createElement("h2");
+      h2.textContent = item.name;
+      li.appendChild(h2);
 
-    let costP = document.createElement("p");
-    costP.textContent = cost + ".00";
-    li.appendChild(costP);
+      const costP = document.createElement("p");
+      costP.textContent = item.cost + ".00";
+      li.appendChild(costP);
 
-    menuContent.appendChild(li);
+      menuContent.appendChild(li);
+      i++;
+    }
+  }
+
+  for (const [category, items] of menuByCategory.entries()) {
+    displayCategoryItems(category, items);
   }
 }
 
@@ -108,19 +125,33 @@ function makeTableVisible(input) {
 
 function filterItems() {
   const input = document.getElementById("searchMenu").value.toLowerCase();
+  console.clear();
+
+  const categoriesToShow = new Set();
 
   for (let i = 1; i <= menuLen; i++) {
-    let { name, category } = menu["item" + i];
-    let itemName = name.toLowerCase();
-    let itemCategory = category.toLowerCase();
-    let item = document.getElementById(`item${i}`);
+    const { name, category } = menu["item" + i];
+    const itemName = name.toLowerCase();
+    const itemCategory = category.toLowerCase();
+    const item = document.getElementById(`item${i}`);
 
     if (itemName.includes(input) || itemCategory.includes(input)) {
       item.style.display = "block";
+      categoriesToShow.add(itemCategory);
     } else {
       item.style.display = "none";
     }
   }
+
+  const headings = document.querySelectorAll("h2#category");
+  headings.forEach((heading) => {
+    const headingText = heading.textContent.trim().toLowerCase();
+    if (categoriesToShow.has(headingText)) {
+      heading.style.display = "block";
+    } else {
+      heading.style.display = "none";
+    }
+  });
 }
 
 function allowDrop(event) {
