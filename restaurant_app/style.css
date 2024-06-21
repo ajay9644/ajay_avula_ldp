@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+  height: 690px;
+  overflow: hidden;
+}
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border: 2px solid gainsboro;
+  width: 30%;
+  height: 100%;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+h3 {
+  text-align: center;
+}
+#searchTable,
+#searchMenu {
+  margin: 20px;
+  padding: 10px;
+}
+#searchMenu {
+  width: 50%;
+}
+#searchTable {
+  width: 75%;
+}
+#tables {
+  height: 100%;
+  list-style-type: none;
+  padding: 0% 5%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+#tables li {
+  width: 90%;
+  height: 25%;
+  margin-bottom: 10%;
+  box-shadow: 1px 3px 5px gray;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#tables li h2 {
+  margin: 0;
+  padding: 4.5%;
+}
+
+#tables li p {
+  margin: 0;
+  padding: 3%;
+  padding-left: 4.5%;
+}
+#tables li:hover {
+  background-color: aquamarine;
+}
+
+.rightContainer {
+  border: 2px solid gainsboro;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.item {
+  display: block;
+  height: 100%;
+  list-style-type: none;
+  padding: 0 2%;
+  overflow: auto;
+}
+
+.item li {
+  width: 90%;
+  height: 20%;
+  margin-bottom: 3%;
+  box-shadow: 1px 3px 5px gray;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.item li:hover {
+  background-color: #478aed;
+}
+.item li h2,
+.item li h3 {
+  margin: 0;
+  padding: 2%;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.item li p {
+  margin: 0;
+  padding: 2%;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 450px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1;
+}
+#pop {
+  background-color: aquamarine;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 3%;
+  padding-right: 69%;
+  margin-top: -3%;
+  margin-left: -3%;
+  position: fixed;
+}
+
+.close-btn {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+  cursor: pointer;
+}
+.close {
+  position: fixed;
+  margin-top: -1%;
+  margin-left: 90%;
+  z-index: 1;
+  background-color: aquamarine;
+  border-style: none;
+  cursor: pointer;
+}
+.close:hover {
+  color: red;
+}
+
+table {
+  margin-top: 10%;
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tbody {
+  display: block;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+th {
+  width: 100%;
+  background-color: #f2f2f2;
+  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+td {
+  border: 1px solid #ddd;
+  padding: 8px 8px 8px 8px;
+}
+
+#totalPrice {
+  position: fixed;
+  bottom: 3%;
+  left: 3%;
+  cursor: pointer;
+}
+
+.closeTable {
+  width: 3%;
+  margin-top: -3.5%;
+  height: 4%;
+  position: fixed;
+  margin-left: 22%;
+  display: none;
+  background-color: white;
+}
+
+.closeMenu {
+  width: 3%;
+  height: 4%;
+  margin-top: -3.5%;
+  position: fixed;
+  margin-left: 34.5%;
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+.target {
+  display: block;
+  background-color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}

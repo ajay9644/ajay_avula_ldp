@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restuarant App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="leftContainer">
+        <div class="tables">
+          <h3>Tables</h3>
+          <input
+            type="text"
+            name="searchTable"
+            id="searchTable"
+            placeholder="Search table"
+            onkeyup="filterTables()"
+          />
+          <button
+            id="closeTable"
+            class="closeTable"
+            onclick="clearTableSearch()"
+          >
+            x
+          </button>
+        </div>
+        <ul id="tables"></ul>
+      </div>
+      <div class="rightContainer">
+        <div class="header">
+          <h3>Menu</h3>
+          <input
+            type="text"
+            name="searchMenu"
+            id="searchMenu"
+            onkeyup="filterItems()"
+            placeholder="Search menu ....by course ,by food"
+          />
+          <button id="closeMenu" class="closeMenu" onclick="clearMenuSearch()">
+            x
+          </button>
+        </div>
+        <ul id="menu" class="item"></ul>
+      </div>
+      <div class="popup">
+        <button class="close" onclick="removePopUp()">x</button>
+        <p id="pop">Order Details</p>
+        <table id="container"></table>
+        <button class="close-btn">Close</button>
+        <p id="totalPrice">Total: 0.00</p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
